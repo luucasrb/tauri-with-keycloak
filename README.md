@@ -1,8 +1,6 @@
 # Setup
 
-If docker is not configured in your machine, execute first-setup.sh (Linux only) so that you can run `docker-compose up -d` without issues
-
-Then, you need to run the following in sudo su mode:
+If docker is not configured in your machine, execute first-setup.sh (Linux only) so that you can run `docker-compose` without issues
 
 # Running
 
