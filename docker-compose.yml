@@ -1,0 +1,34 @@
+version: "2.0"
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:14.0.0
+    container_name: keycloak
+    environment:
+      KEYCLOAK_USER: test
+      KEYCLOAK_PASSWORD: test
+      DB_USER: keycloak
+      DB_PASSWORD: password
+      DB_DATABASE: keycloak
+      DB_VENDOR: POSTGRES
+      DB_ADDR: database
+      DB_SCHEMA: public
+      PROXY_ADDRESS_FORWARDING: "true"
+      KEYCLOAK_IMPORT: /tmp/realm-export.json
+      # JAVA_OPTS: -Dkeycloak.profile.feature.upload_scripts=enabled
+    volumes:
+      - ./docker-volumes/keycloak_config/realm-export.json:/tmp/realm-export.json
+    ports:
+      - 8082:8080
+
+  database:
+    image: postgres:9.6-bullseye
+    container_name: database
+    command: postgres -c 'max_connections=120'
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+      TZ: America/Sao_Paulo
+      PGTZ: America/Sao_Paulo
+    ports:
+      - 5435:5432
