@@ -12,11 +12,12 @@ To run the project you need to:
 
 Remember to destroy the docker containers after running them with `docker-compose kill`, or there may be problems with other vagrant projects later
 
+- URL: http://localhost:5173/
 - Login: user1/user1
 
 # Keycloak panel 
 
-- Url: http://localhost:8082/auth
+- URL: http://localhost:8082/auth
 - Login: test/test
 - Realm: test
 - ClientId: test
